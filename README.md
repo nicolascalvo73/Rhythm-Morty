@@ -1,1 +1,1 @@
-# Rithm-Morty
+# Rithm & Morty
