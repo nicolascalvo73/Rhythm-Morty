@@ -1,9 +1,26 @@
+@keyframes appear {
+	from {
+		transform: translateY(100%);
+	}
+	to {
+		transform: translateY(0);
+	}
+}
+
 .Card {
+	position: relative;
+	transform: translateY(100%);
+	animation: appear 0.5s ease-out forwards;
 	width: 20rem;
-	background-color: rgba(38, 38, 38, 0.85);
+	background-color: rgb(38, 38, 38);
+	opacity: 0.85;
 	margin: 1rem;
 	border-radius: 32px;
 	padding: 8px;
+	transition: opacity 0.5s ease-in-out;
+}
+.Card:hover {
+	opacity: 1;
 }
 .Header {
 	display: flex;
