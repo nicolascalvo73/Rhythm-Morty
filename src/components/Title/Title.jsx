@@ -3,11 +3,13 @@ import styles from './Title.module.css'
 const Title = () => {
 	return (
 		<div className={styles.Title}>
-			<img
-				className={styles.Image}
-				src="https://res.cloudinary.com/lennyj/image/upload/v1593515673/58f37720a4fa116215a9240f_1.png"
-				alt="Rick and Morty Title"
-			/>
+			<a className={styles.a} href="https://github.com/nicolascalvo73/Rhythm-Morty" target="_blank">
+				<img
+					className={styles.Image}
+					src="https://res.cloudinary.com/lennyj/image/upload/v1593515673/58f37720a4fa116215a9240f_1.png"
+					alt="Rick and Morty Title"
+				/>
+			</a>
 		</div>
 	)
 }
