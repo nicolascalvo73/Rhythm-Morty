@@ -4,13 +4,16 @@ import Cards from './components/Cards/Cards.jsx'
 import SearchBar from './components/SearchBar/SearchBar.jsx'
 import characters from './data.js'
 import Title from './components/Title/Title'
+import { useState } from 'react'
 
 function App() {
+	const [cast, setCast] = useState(characters)
+
 	return (
 		<div className="App">
 			<SearchBar onSearch={(characterID) => window.alert(characterID)} />
 			<Title />
-			<Cards characters={characters} />
+			<Cards characters={cast} />
 
 			{/* <Card
 				id={Rick.id}

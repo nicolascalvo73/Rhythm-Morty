@@ -13,8 +13,9 @@ const Card = ({ name, species, gender, image, onClose, status, origin }) => {
 			</div>
 
 			<div className={styles.Inner}>
-				<h2 className={styles.Subtitle}> {species} </h2>
-				<h2 className={styles.Subtitle}> {gender} </h2>
+				{/* <h2 className={styles.Subtitle}> {species} </h2>
+				<h2 className={styles.Subtitle}> {gender} </h2> */}
+				<h3> Click para más info </h3>
 				<img className={styles.CardImg} src={image} alt="" />
 			</div>
 		</div>
