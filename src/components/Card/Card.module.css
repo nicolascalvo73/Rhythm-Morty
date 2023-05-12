@@ -8,8 +8,6 @@
 }
 
 .Card {
-	position: relative;
-	transform: translateY(100%);
 	animation: appear 0.5s ease-out forwards;
 	width: 20rem;
 	background-color: rgba(38, 38, 38, 0.5);
@@ -17,10 +15,11 @@
 	margin: 1rem;
 	border-radius: 32px;
 	padding: 8px;
-	transition: background-color 1.5s ease-in-out;
-}
-.Card:hover {
-	background-color: rgba(38, 38, 38, 1);
+	transition: background-color 0.7s ease-in-out;
+	&:hover {
+		background-color: rgba(38, 38, 38, 1);
+		transform: rotate(-5deg);
+	}
 }
 .Header {
 	display: flex;
@@ -45,21 +44,25 @@ h3 {
 	border: 1px solid black;
 	color: red;
 	background-color: white;
-	font-size: larger;
+	font-size: x-large;
 	font-weight: bolder;
 	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
 	width: 3rem;
 	height: 3rem;
 	border-radius: 50%;
-}
-.CloseBtn:hover {
-	color: white;
-	background-color: red;
+	&:hover {
+		color: white;
+		background-color: red;
+	}
 }
 .CardImg {
 	width: 100%;
 	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
 	border-radius: 8px 8px 16px 16px;
+	transition: transform 2s ease-in-out;
+	&:hover {
+		transform: scale(1.05);
+	}
 }
 .Title {
 	display: flex;

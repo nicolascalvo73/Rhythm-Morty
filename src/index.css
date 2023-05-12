@@ -1,13 +1,59 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+		'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	/* position: fixed; */
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-position: 0 0;
+	animation: moveBackground 180s linear infinite;
+	min-height: 100vh;
+	background-image: url('../public/images/istockphoto-1184926807-1024x1024-transformed.jpeg');
+	background-size: 50%;
+}
+
+@keyframes moveBackground {
+	0% {
+		background-position: 0 0;
+	}
+	25% {
+		background-position: 500px 1000px;
+	}
+	50% {
+		background-position: 1000px 500px;
+	}
+	75% {
+		background-position: 500px 1000px;
+	}
+	100% {
+		background-position: 0px 500px;
+	}
+}
+@keyframes modoBardo {
+	0% {
+		background-position: 0 0;
+		transform: rotate(0deg);
+	}
+	25% {
+		background-position: 500px 1000px;
+	}
+	50% {
+		background-position: 1000px 500px;
+	}
+	75% {
+		background-position: 500px 1000px;
+	}
+	100% {
+		background-position: 0px 500px;
+		transform: rotate(360deg);
+	}
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }

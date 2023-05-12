@@ -8,7 +8,9 @@
 	height: 12rem;
 }
 .Image:hover {
-	filter: brightness(150%);
+	filter: brightness(250%);
+	transition: filter 3s ease-in-out;
+	cursor: pointer;
 }
 @media (max-width: 550px) {
 	.Image {
@@ -31,7 +33,7 @@
 	padding: 8px;
 	border-radius: 16px;
 	opacity: 0;
-	transition: opacity 1s ease-in-out;
+	/* transition: opacity 1s ease-in-out; */
 }
 
 .a:hover::after {
@@ -40,11 +42,11 @@
 	bottom: -15px;
 	left: 50%;
 	transform: translateX(-50%);
-	border-left: 7px solid transparent;
+	/* border-left: 7px solid transparent;
 	border-right: 7px solid transparent;
-	border-top: 7px solid #333;
+	border-top: 7px solid #333; */
 	opacity: 0;
-	transition: opacity 0.3s ease-in-out;
+	/* transition: opacity 1s ease-in-out; */
 }
 
 .a:hover::before,
