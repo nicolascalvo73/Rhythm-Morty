@@ -7,6 +7,12 @@ const SearchBar = ({ onSearch, closeAll, getRandom }) => {
 	const handleChange = (event) => {
 		setInput(event.target.value)
 	}
+	const handleKeyDown = (event) => {
+		if (event.key === 'Enter') {
+			onSearch(input)
+			setInput('')
+		}
+	}
 
 	return (
 		<div className={styles.Header}>
@@ -15,6 +21,7 @@ const SearchBar = ({ onSearch, closeAll, getRandom }) => {
 				placeholder="Escribe aqui ID o nombre"
 				className={styles.Input}
 				onChange={handleChange}
+				onKeyDown={handleKeyDown}
 				value={input}
 			/>
 			<button
