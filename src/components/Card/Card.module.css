@@ -1,32 +1,67 @@
 @keyframes appear {
 	from {
-		transform: translateY(50%);
+		transform: translateY(150%);
 	}
 	to {
 		transform: translateY(0);
 	}
 }
-
 .Card {
+	position: relative;
 	animation: appear 0.5s ease-out forwards;
 	width: 20rem;
-	background-color: rgba(38, 38, 38, 0.5);
+	height: 26rem;
 	backdrop-filter: blur(5px);
 	margin: 1rem;
-	border-radius: 32px;
+	perspective: 1000px;
+	transition: transform 0.6s;
 	padding: 8px;
-	transition: background-color 0.7s ease-in-out;
+	transform-style: preserve-3d;
+	user-select: none;
+}
+.front,
+.back {
+	border-radius: 32px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	backface-visibility: hidden;
+}
+
+.front {
+	transition: background-color 1s ease-in-out;
+	background-color: rgba(38, 38, 38, 0.5);
+	transform-origin: left center;
 	&:hover {
 		background-color: rgba(38, 38, 38, 1);
-		transform: rotate(-5deg);
 	}
 }
+
+.back {
+	background-color: rgba(217, 217, 217, 1);
+	transform-origin: left center;
+	transform: rotateY(-180deg);
+}
+
+.flipped .front {
+	transition: transform 1s ease;
+	transform: rotateY(-180deg);
+}
+
+.flipped .back {
+	transition: transform 1s ease;
+	transform: rotateY(0);
+}
+
 .Header {
 	display: flex;
 	align-items: center;
 }
 
 .Inner {
+	cursor: pointer;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -36,7 +71,7 @@
 	width: 16rem;
 	background-color: rgba(255, 255, 255, 1);
 }
-h3 {
+h2 {
 	text-align: center;
 }
 
@@ -59,10 +94,6 @@ h3 {
 	width: 100%;
 	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
 	border-radius: 8px 8px 16px 16px;
-	transition: transform 2s ease-in-out;
-	&:hover {
-		transform: scale(1.05);
-	}
 }
 .Title {
 	display: flex;

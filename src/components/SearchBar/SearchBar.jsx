@@ -1,15 +1,29 @@
+import { useState } from 'react'
 import styles from './SearchBar.module.css'
 
 const SearchBar = ({ onSearch }) => {
+	const [input, setInput] = useState('')
+
+	const handleChange = (event) => {
+		setInput(event.target.value)
+	}
+
 	return (
 		<div className={styles.Header}>
-			<input type="search" placeholder="Introduce aqui el coso" className={styles.Input} />
+			<input
+				type="search"
+				placeholder="Escribe aqui ID o nombre"
+				className={styles.Input}
+				onChange={handleChange}
+				value={input}
+			/>
 			<button
 				className={styles.Button}
-				onClick={(key) => {
-					onSearch(key)
+				onClick={() => {
+					onSearch(input)
+					setInput('')
 				}}>
-				Agregar
+				Get Schwifty!
 			</button>
 		</div>
 	)

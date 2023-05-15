@@ -5,7 +5,7 @@
 	width: 100%;
 }
 .Image {
-	height: 12rem;
+	height: 10rem;
 }
 .Image:hover {
 	filter: brightness(250%);
