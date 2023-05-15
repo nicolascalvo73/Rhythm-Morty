@@ -27,8 +27,10 @@ function App() {
 		}, 3500)
 	}
 
-	const nameNotFound = () => {
-		setModalTitle('No encontre ese Name')
+	const nameNotFound = (name) => {
+		let str = name.toLowerCase()
+		let nombre = str.charAt(0).toUpperCase() + str.slice(1)
+		setModalTitle(`${nombre} no esta aquí!`)
 		setModalContent('Estas tipeando mal... serás castigada!')
 		setModalOpen(true)
 		setTimeout(() => {
@@ -69,7 +71,7 @@ function App() {
 					if (data.results) {
 						setCharacters((oldChars) => [...oldChars, ...data.results])
 					} else {
-						nameNotFound()
+						nameNotFound(input)
 					}
 				})
 		}
@@ -79,8 +81,8 @@ function App() {
 		<div className={gravity}>
 			<Nav onSearch={onSearch} gravityHandle={gravityHandle} closeAll={closeAll} getRandom={getRandom} />
 			<Title />
-			<Cards characters={characters} onClose={onClose} />
 			<Modal isOpen={modalOpen} modalTitle={modalTitle} modalContent={modalContent} />
+			<Cards characters={characters} onClose={onClose} />
 		</div>
 	)
 }

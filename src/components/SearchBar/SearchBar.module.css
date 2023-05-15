@@ -38,5 +38,4 @@
 }
 .Button:hover {
 	filter: brightness(150%);
-	box-shadow: 2px 2px 5px rgba(255, 255, 255, 0.899);
 }
