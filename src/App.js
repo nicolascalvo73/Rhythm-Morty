@@ -16,6 +16,15 @@ function App() {
 		setCharacters(characters.filter((char) => char.id !== id))
 	}
 
+	const closeAll = () => {
+		setCharacters([])
+	}
+
+	const getRandom = () => {
+		const value = Math.floor(Math.random() * 827)
+		onSearch(value)
+	}
+
 	const onSearch = (input) => {
 		if (!isNaN(input)) {
 			fetch(`https://rickandmortyapi.com/api/character/${input}`)
@@ -42,7 +51,7 @@ function App() {
 
 	return (
 		<div className={gravity}>
-			<Nav onSearch={onSearch} gravityHandle={gravityHandle} />
+			<Nav onSearch={onSearch} gravityHandle={gravityHandle} closeAll={closeAll} getRandom={getRandom} />
 			<Title />
 			<Cards characters={characters} onClose={onClose} />
 		</div>

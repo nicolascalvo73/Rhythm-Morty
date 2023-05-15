@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import styles from './SearchBar.module.css'
 
-const SearchBar = ({ onSearch }) => {
+const SearchBar = ({ onSearch, closeAll, getRandom }) => {
 	const [input, setInput] = useState('')
 
 	const handleChange = (event) => {
@@ -24,6 +24,20 @@ const SearchBar = ({ onSearch }) => {
 					setInput('')
 				}}>
 				Get Schwifty!
+			</button>
+			<button
+				className={styles.Button}
+				onClick={() => {
+					getRandom()
+				}}>
+				Get Shuffle
+			</button>
+			<button
+				className={styles.Button}
+				onClick={() => {
+					closeAll()
+				}}>
+				Kill'em all
 			</button>
 		</div>
 	)
