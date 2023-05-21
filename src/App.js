@@ -54,11 +54,13 @@ function App() {
 
 	const closeAll = () => {
 		setCharacters([])
+		navigate('/home')
 	}
 
 	const getRandom = () => {
 		const value = Math.floor(Math.random() * 827)
 		onSearch(value)
+		navigate('/home')
 	}
 
 	const onSearch = (input) => {
@@ -68,6 +70,7 @@ function App() {
 				.then((data) => {
 					if (data.name) {
 						setCharacters((oldChars) => [...oldChars, data])
+						navigate('/home')
 					} else {
 						idNotFound()
 					}
@@ -78,6 +81,7 @@ function App() {
 				.then((data) => {
 					if (data.results) {
 						setCharacters((oldChars) => [...oldChars, ...data.results])
+						navigate('/home')
 					} else {
 						nameNotFound(input)
 					}

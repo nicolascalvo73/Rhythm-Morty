@@ -2,6 +2,10 @@ import styles from './About.module.css'
 import meImage from '../../assets/images/me.png'
 
 const About = () => {
+	const pickleClick = () => {
+		window.open('https://www.youtube.com/watch?v=leCVVw6iD84', '_blank')
+	}
+
 	return (
 		<div className={styles.container}>
 			<img src={meImage} alt="Foto del autor RickandMortyzada" />
@@ -15,7 +19,7 @@ const About = () => {
 				<h2> Origin: Unknown </h2>
 				<h2> Location: Earth (C-137) </h2>
 			</div>
-			<div className={styles.pickleRick}></div>
+			<div className={styles.pickleRick} onClick={pickleClick}></div>
 		</div>
 	)
 }
