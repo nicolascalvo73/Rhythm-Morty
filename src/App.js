@@ -3,7 +3,10 @@ import Nav from './components/Nav/Nav.jsx'
 import Cards from './components/Cards/Cards.jsx'
 import Title from './components/Title/Title.jsx'
 import Modal from './components/Modal/Modal'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useNavigate, Route, Routes } from 'react-router-dom'
+import About from './components/About/About'
+import Detail from './components/Detail/Detail'
 
 function App() {
 	const [characters, setCharacters] = useState([])
@@ -11,6 +14,11 @@ function App() {
 	const [modalOpen, setModalOpen] = useState(false)
 	const [modalTitle, setModalTitle] = useState('')
 	const [modalContent, setModalContent] = useState('')
+	const navigate = useNavigate()
+
+	useEffect(() => {
+		navigate('/home')
+	}, [])
 
 	const gravityHandle = () => {
 		gravity === 'App' ? setGravity('App-no-gravity') : setGravity('App')
@@ -82,7 +90,11 @@ function App() {
 			<Nav onSearch={onSearch} gravityHandle={gravityHandle} closeAll={closeAll} getRandom={getRandom} />
 			<Title />
 			<Modal isOpen={modalOpen} modalTitle={modalTitle} modalContent={modalContent} />
-			<Cards characters={characters} onClose={onClose} />
+			<Routes>
+				<Route path="/home" element={<Cards characters={characters} onClose={onClose} />} />
+				<Route path="/about" element={<About />} />
+				<Route path="/detail/:id" element={<Detail />} />
+			</Routes>
 		</div>
 	)
 }

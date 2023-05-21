@@ -44,7 +44,7 @@ const SearchBar = ({ onSearch, closeAll, getRandom }) => {
 				onClick={() => {
 					closeAll()
 				}}>
-				Kill'em all
+				Clean'em all
 			</button>
 		</div>
 	)
