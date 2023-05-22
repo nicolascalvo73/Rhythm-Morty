@@ -1,6 +1,6 @@
 import styles from './Form.module.css'
 import { useEffect, useState } from 'react'
-import { validateEmail, validatePassword } from '../../utils/validaciones'
+import { validateEmail, validatePassword } from '../../utils/validation'
 
 const Form = ({ login }) => {
 	const [img, setImg] = useState('')
@@ -15,12 +15,12 @@ const Form = ({ login }) => {
 
 	const handleChange = (event) => {
 		const { value, name } = event.target
-		setUserData({ ...userData, [name]: value })
 		setErrors(
 			name === 'email'
 				? validateEmail({ ...userData, [name]: value })
 				: validatePassword({ ...userData, [name]: value })
 		)
+		setUserData({ ...userData, [name]: value })
 		Object.entries(errors).length === 0 && setButton(true)
 	}
 
@@ -32,6 +32,10 @@ const Form = ({ login }) => {
 	const handleSubmit = (event) => {
 		event.preventDefault()
 		login(userData)
+		setUserData({
+			email: '',
+			password: '',
+		})
 	}
 
 	return (
