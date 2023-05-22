@@ -1,5 +1,5 @@
 import styles from './Detail.module.css'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import axios from 'axios'
 import { useEffect } from 'react'
 import { useState } from 'react'
@@ -18,8 +18,6 @@ const Detail = () => {
 		})
 		return setCharacter({})
 	}, [id])
-	console.log(character)
-	console.log(character.species)
 
 	return (
 		<div className={styles.container}>
@@ -31,6 +29,9 @@ const Detail = () => {
 				{character.species && <h2>Species: {character.species}</h2>}
 				{character.gender && <h2>Gender: {character.gender}</h2>}
 				{character.origin && character.origin.name && <h2>Origin: {character.origin.name}</h2>}
+				<Link to="/home">
+					<button className={styles.button}>Go Back!</button>
+				</Link>
 			</div>
 		</div>
 	)

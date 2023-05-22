@@ -14,21 +14,29 @@
 		transform: rotate(-360deg);
 	}
 }
+@keyframes img {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
 .container {
+	position: relative;
+	top: 5em;
 	backdrop-filter: blur(5px);
-	/* position: relative; */
 	border-radius: 256px 32px 32px 256px;
 	margin: 0 15%;
 	width: 70%;
 	height: 28rem;
-	animation: appear 0.5s ease-out forwards;
+	animation: appear 1s ease-out forwards;
 	background-color: rgba(38, 38, 38, 0.5);
 	display: flex;
 	justify-content: space-between;
 }
 .container img {
 	box-shadow: none;
-	background-color: blue;
 	position: relative;
 	z-index: 1;
 	margin: 7rem 0rem 0rem 6rem;
@@ -36,18 +44,47 @@
 	height: 15rem;
 	border-radius: 50%;
 	box-shadow: 0px 0px 32px 32px rgb(0, 0, 0);
+	animation: img 35s infinite linear;
+}
+.warning {
+	color: rgb(111, 0, 0);
+	font-weight: bold;
 }
 .data {
-	background-color: aliceblue;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(240, 248, 255, 0.5);
 	border-radius: 32px;
 	margin: 2rem 2rem 2rem 2rem;
 	width: 38rem;
-}
-@media (max-width: 1024px) {
-	.container {
-		border-radius: 32px 32px 32px 32px;
+	transition: background-color 1s ease-in-out;
+	&:hover {
+		background-color: rgba(240, 248, 255, 0.9);
 	}
 }
+.input {
+	font-family: Helvetica;
+	color: aliceblue;
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+	margin: 1em;
+	width: 17em;
+	height: 3em;
+	border-radius: 1.5em;
+	background-color: #067d8d;
+	padding: 1em;
+}
+.input::placeholder {
+	font-family: Helvetica;
+	color: rgb(219, 227, 234);
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+.input:hover {
+	filter: brightness(150%);
+	box-shadow: 2px 2px 5px rgba(255, 255, 255, 0.899);
+}
+
 .button {
 	font-family: Helvetica;
 	color: aliceblue;
@@ -63,9 +100,19 @@
 	cursor: pointer;
 	filter: brightness(150%);
 }
+.disabledButton {
+	font-family: Helvetica;
+	color: rgb(51, 51, 51);
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+	width: 8em;
+	margin: 1.2em 0.2em;
+	height: 2.8em;
+	border-radius: 1.5em;
+	background-color: #80999c;
+	padding: 0.8em;
+}
 
 .portal {
-	/* display: flex; */
 	position: absolute;
 	top: 3rem;
 	left: 2rem;

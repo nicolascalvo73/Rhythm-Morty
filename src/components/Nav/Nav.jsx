@@ -3,7 +3,7 @@ import SearchBar from '../SearchBar/SearchBar'
 import Toggle from '../Toggle/Toggle'
 import { Link } from 'react-router-dom'
 
-const Nav = ({ onSearch, gravityHandle, closeAll, getRandom }) => {
+const Nav = ({ logout, onSearch, gravityHandle, closeAll, getRandom }) => {
 	return (
 		<nav className={styles.container}>
 			<SearchBar onSearch={onSearch} closeAll={closeAll} getRandom={getRandom} />
@@ -13,6 +13,9 @@ const Nav = ({ onSearch, gravityHandle, closeAll, getRandom }) => {
 				</Link>
 				<Link to="/about">
 					<button className={styles.button}>About</button>
+				</Link>
+				<Link to="/">
+					<button className={styles.button}>Log Out</button>
 				</Link>
 
 				<Toggle className={styles.toggle} gravityHandle={gravityHandle} />

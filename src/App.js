@@ -3,10 +3,11 @@ import Nav from './components/Nav/Nav.jsx'
 import Cards from './components/Cards/Cards.jsx'
 import Title from './components/Title/Title.jsx'
 import Modal from './components/Modal/Modal'
-import { useEffect, useState } from 'react'
-import { useNavigate, Route, Routes } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { useLocation, useNavigate, Route, Routes } from 'react-router-dom'
 import About from './components/About/About'
 import Detail from './components/Detail/Detail'
+import Form from './components/Form/Form'
 
 function App() {
 	const [characters, setCharacters] = useState([])
@@ -14,14 +15,30 @@ function App() {
 	const [modalOpen, setModalOpen] = useState(false)
 	const [modalTitle, setModalTitle] = useState('')
 	const [modalContent, setModalContent] = useState('')
+	const [access, setAccess] = useState(false)
 	const navigate = useNavigate()
+	const location = useLocation()
+	const path = location.pathname
+	const EMAIL = 'mail@mail.com'
+	const PASSWORD = 'admin123'
 
 	useEffect(() => {
-		navigate('/home')
-	}, [])
+		!access && navigate('/')
+	}, [access])
 
 	const gravityHandle = () => {
 		gravity === 'App' ? setGravity('App-no-gravity') : setGravity('App')
+	}
+
+	const login = (userData) => {
+		if (userData.password === PASSWORD && userData.email === EMAIL) {
+			setAccess(true)
+			navigate('/home')
+		}
+	}
+
+	const logout = () => {
+		setAccess(false)
 	}
 
 	const idNotFound = () => {
@@ -91,10 +108,19 @@ function App() {
 
 	return (
 		<div className={gravity}>
-			<Nav onSearch={onSearch} gravityHandle={gravityHandle} closeAll={closeAll} getRandom={getRandom} />
-			<Title />
-			<Modal isOpen={modalOpen} modalTitle={modalTitle} modalContent={modalContent} />
+			<div className={path === '/' && 'hidden'}>
+				<Nav
+					logout={logout}
+					onSearch={onSearch}
+					gravityHandle={gravityHandle}
+					closeAll={closeAll}
+					getRandom={getRandom}
+				/>
+				<Title />
+				<Modal isOpen={modalOpen} modalTitle={modalTitle} modalContent={modalContent} />
+			</div>
 			<Routes>
+				<Route path="/" element={<Form login={login} />} />
 				<Route path="/home" element={<Cards characters={characters} onClose={onClose} />} />
 				<Route path="/about" element={<About />} />
 				<Route path="/detail/:id" element={<Detail />} />
