@@ -40,7 +40,7 @@ const Form = ({ login }) => {
 					<h2>E-mail</h2>
 				</label>
 				<input onChange={handleChange} value={userData.email} name="email" className={styles.input}></input>
-				<span className={styles.warning}>{errors.email}</span>
+				<span className={styles.warning}>{` ${errors.email ? errors.email : 'mail@mail.com'}`}</span>
 				<label>
 					<h2>Password</h2>
 				</label>
@@ -49,7 +49,7 @@ const Form = ({ login }) => {
 					value={userData.password}
 					name="password"
 					className={styles.input}></input>
-				<span className={styles.warning}>{errors.password}</span>
+				<span className={styles.warning}>{` ${errors.password ? errors.password : 'admin123'}`}</span>
 				<button
 					disabled={!button}
 					className={button ? styles.button : styles.disabledButton}
