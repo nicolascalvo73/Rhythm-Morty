@@ -1,6 +1,6 @@
 import styles from './Form.module.css'
 import { useEffect, useState } from 'react'
-import validate from '../../utils/validaciones'
+import { validateEmail, validatePassword } from '../../utils/validaciones'
 
 const Form = ({ login }) => {
 	const [img, setImg] = useState('')
@@ -14,10 +14,13 @@ const Form = ({ login }) => {
 	const [errors, setErrors] = useState({})
 
 	const handleChange = (event) => {
-		const property = event.target.name
-		const value = event.target.value
-		setUserData({ ...userData, [property]: value })
-		setErrors(validate({ ...userData, [property]: value }))
+		const { value, name } = event.target
+		setUserData({ ...userData, [name]: value })
+		setErrors(
+			name === 'email'
+				? validateEmail({ ...userData, [name]: value })
+				: validatePassword({ ...userData, [name]: value })
+		)
 		Object.entries(errors).length === 0 && setButton(true)
 	}
 
@@ -40,7 +43,9 @@ const Form = ({ login }) => {
 					<h2>E-mail</h2>
 				</label>
 				<input onChange={handleChange} value={userData.email} name="email" className={styles.input}></input>
-				<span className={styles.warning}>{` ${errors.email ? errors.email : 'mail@mail.com'}`}</span>
+				<span className={styles.warning}>{` ${
+					errors.email ? errors.email : 'ingresa con mail@mail.com'
+				}`}</span>
 				<label>
 					<h2>Password</h2>
 				</label>
@@ -49,7 +54,9 @@ const Form = ({ login }) => {
 					value={userData.password}
 					name="password"
 					className={styles.input}></input>
-				<span className={styles.warning}>{` ${errors.password ? errors.password : 'admin123'}`}</span>
+				<span className={styles.warning}>{` ${
+					errors.password ? errors.password : 'ingresa con admin123'
+				}`}</span>
 				<button
 					disabled={!button}
 					className={button ? styles.button : styles.disabledButton}
