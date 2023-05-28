@@ -40,8 +40,8 @@ const Form = ({ login }) => {
 
 	return (
 		<div className={styles.container}>
-			<img src={img} alt="Character" />
 			<div className={styles.portal}></div>
+			<img className={styles.overlayImg} src={img} alt="Character" />
 			<form className={styles.data}>
 				<label>
 					<h2>E-mail</h2>

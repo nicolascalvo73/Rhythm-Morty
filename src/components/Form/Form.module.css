@@ -23,6 +23,7 @@
 	}
 }
 .container {
+	display: flex;
 	position: relative;
 	top: 5em;
 	backdrop-filter: blur(5px);
@@ -32,14 +33,15 @@
 	height: 28rem;
 	animation: appear 1s ease-out forwards;
 	background-color: rgba(38, 38, 38, 0.5);
-	display: flex;
 	justify-content: space-between;
 }
-.container img {
-	box-shadow: none;
+
+.overlayImg {
 	position: relative;
+	top: 6.5rem;
+	left: 5.5rem;
+	box-shadow: none;
 	z-index: 1;
-	margin: 7rem 0rem 0rem 6rem;
 	width: 15rem;
 	height: 15rem;
 	border-radius: 50%;
@@ -153,4 +155,31 @@
 		radial-gradient(circle at 49% 35%, transparent 40%, #fff8c5 37%),
 		radial-gradient(circle at 79% 59%, transparent 40%, #fffe9c 37%),
 		radial-gradient(circle at 50% 50%, #fdfeb4 100%, #fdfeb4 100%);
+}
+@media (max-width: 1000px) {
+	.container {
+		top: 12rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		border-radius: 32px;
+		height: 42rem;
+	}
+	.data {
+		position: relative;
+		top: -2rem;
+		width: 90%;
+	}
+	.portal {
+		top: -11rem;
+		left: 2rem;
+		justify-self: center;
+	}
+	.overlayImg {
+		top: -5rem;
+		left: 0;
+		position: relative;
+		justify-self: center;
+	}
 }
