@@ -51,36 +51,87 @@ h2 {
 }
 
 .CloseBtn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	border: 1px solid black;
 	color: red;
 	background-color: white;
-	font-size: x-large;
+	font-size: 3em;
 	font-weight: bolder;
 	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
 	width: 3rem;
 	height: 3rem;
 	border-radius: 50%;
+	transition: color 0.5s ease-in-out;
+	transition: background-color 0.5s ease-in-out;
 	&:hover {
 		color: white;
 		background-color: red;
 	}
+}
+
+.disabledBtn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid rgb(55, 55, 55);
+	color: rgb(76, 76, 76);
+	background-color: rgb(125, 125, 125);
+	font-size: 3em;
+	font-weight: bolder;
+	width: 3rem;
+	height: 3rem;
+	border-radius: 50%;
 }
 .CardImg {
 	width: 100%;
 	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
 	border-radius: 8px 8px 16px 16px;
 }
+
 .Title {
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
 	font-size: 1.3rem;
 	background-color: white;
 	border-radius: 1.5rem;
-	width: 14rem;
+	width: 13rem;
 	height: 3rem;
 	margin: 1rem;
+	padding: 0 0.5rem;
 }
+
+.Title button {
+	border: none;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	justify-self: end;
+	font-size: 1em;
+	width: 2rem;
+	height: 2rem;
+	border-radius: 50%;
+	transition: color 0.5s ease-in-out;
+	transition: scale 1s ease-in-out;
+	background-color: rgb(255, 255, 255);
+}
+.addFav {
+	color: rgb(161, 161, 161);
+	&:hover {
+		scale: 1.1;
+		color: green;
+	}
+}
+.removeFav {
+	color: green;
+	&:hover {
+		scale: 0.9;
+		color: red;
+	}
+}
+
 .Subtitle {
 	font-size: 1rem;
 	margin-top: -10px;

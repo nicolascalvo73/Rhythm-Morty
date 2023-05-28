@@ -1,0 +1,8 @@
+.container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap-reverse;
+	text-align: center;
+	z-index: 99;
+}

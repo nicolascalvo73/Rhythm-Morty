@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import styles from './SearchBar.module.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBroom, faCircleArrowDown, faShuffle } from '@fortawesome/free-solid-svg-icons'
 
 const SearchBar = ({ onSearch, closeAll, getRandom }) => {
 	const [input, setInput] = useState('')
@@ -24,28 +26,33 @@ const SearchBar = ({ onSearch, closeAll, getRandom }) => {
 				onKeyDown={handleKeyDown}
 				value={input}
 			/>
-			<button
-				className={styles.Button}
-				onClick={() => {
-					onSearch(input)
-					setInput('')
-				}}>
-				Get Schwifty!
-			</button>
-			<button
-				className={styles.Button}
-				onClick={() => {
-					getRandom()
-				}}>
-				Get Shuffle
-			</button>
-			<button
-				className={styles.Button}
-				onClick={() => {
-					closeAll()
-				}}>
-				Clean'em all
-			</button>
+			<div className={styles.btnContainer}>
+				<button
+					className={styles.Button}
+					onClick={() => {
+						onSearch(input)
+						setInput('')
+					}}>
+					<FontAwesomeIcon icon={faCircleArrowDown} />
+					<tool-tip>Get Character</tool-tip>
+				</button>
+				<button
+					className={styles.Button}
+					onClick={() => {
+						getRandom()
+					}}>
+					<FontAwesomeIcon icon={faShuffle} />
+					<tool-tip>Get Random</tool-tip>
+				</button>
+				<button
+					className={styles.Button}
+					onClick={() => {
+						closeAll()
+					}}>
+					<FontAwesomeIcon icon={faBroom} />
+					<tool-tip>Clean-em all!</tool-tip>
+				</button>
+			</div>
 		</div>
 	)
 }

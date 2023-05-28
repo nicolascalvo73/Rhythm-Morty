@@ -13,44 +13,38 @@
 	transition: filter 3s ease-in-out;
 	cursor: pointer;
 }
+
+.a {
+	position: relative;
+	top: 3em;
+	left: -3em;
+}
+.a tool-tip {
+	text-decoration: none;
+	position: absolute;
+	top: 128px;
+	left: 40%;
+	color: white;
+	font-weight: bold;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 9rem;
+	height: 1.5rem;
+	z-index: 999;
+	pointer-events: none;
+	user-select: none;
+	background-color: rgba(255, 255, 255, 0.5);
+	border-radius: 0.7rem;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+:has(> tool-tip):hover tool-tip {
+	opacity: 1;
+}
+
 @media (max-width: 550px) {
 	.Image {
 		height: 8rem;
 	}
-}
-
-.a {
-	position: relative;
-}
-
-.a:hover::before {
-	content: 'Go to the Repo!';
-	position: absolute;
-	bottom: 25px;
-	left: 50%;
-	transform: translateX(-100%);
-	background-color: #333;
-	color: #fff;
-	padding: 8px;
-	border-radius: 16px;
-	opacity: 0;
-	/* transition: opacity 1s ease-in-out; */
-}
-
-.a:hover::after {
-	content: '';
-	position: absolute;
-	bottom: -15px;
-	left: 50%;
-	transform: translateX(-50%);
-	/* border-left: 7px solid transparent;
-	border-right: 7px solid transparent;
-	border-top: 7px solid #333; */
-	opacity: 0;
-	/* transition: opacity 1s ease-in-out; */
-}
-
-.a:hover::before,
-.a:hover::after {
-	opacity: 1;
 }

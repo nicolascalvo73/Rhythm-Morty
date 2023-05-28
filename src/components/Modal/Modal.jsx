@@ -2,7 +2,6 @@ import styles from './Modal.module.css'
 
 const Modal = ({ isOpen, modalTitle, modalContent }) => {
 	const visibility = isOpen ? styles.container : styles.nope
-	console.log(visibility)
 	return (
 		<div className={visibility}>
 			<div className={styles.modal}>
@@ -14,5 +13,3 @@ const Modal = ({ isOpen, modalTitle, modalContent }) => {
 }
 
 export default Modal
-
-// {`${isOpen ? 'styles.modal' : 'styles.nope'}`}

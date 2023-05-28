@@ -31,7 +31,7 @@ const Form = ({ login }) => {
 
 	const handleSubmit = (event) => {
 		event.preventDefault()
-		login(userData)
+		Object.entries(errors).length === 0 && login(userData)
 		setUserData({
 			email: '',
 			password: '',

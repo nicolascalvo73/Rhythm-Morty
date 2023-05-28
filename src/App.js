@@ -1,13 +1,13 @@
 import './App.css'
 import Nav from './components/Nav/Nav.jsx'
 import Cards from './components/Cards/Cards.jsx'
-import Title from './components/Title/Title.jsx'
 import Modal from './components/Modal/Modal'
 import { useState, useEffect } from 'react'
 import { useLocation, useNavigate, Route, Routes } from 'react-router-dom'
 import About from './components/About/About'
 import Detail from './components/Detail/Detail'
 import Form from './components/Form/Form'
+import Favorites from './components/Favorites/Favorites'
 
 function App() {
 	const [characters, setCharacters] = useState([])
@@ -17,8 +17,7 @@ function App() {
 	const [modalContent, setModalContent] = useState('')
 	const [access, setAccess] = useState(false)
 	const navigate = useNavigate()
-	const location = useLocation()
-	const path = location.pathname
+	const { pathname } = useLocation()
 	const EMAIL = 'mail@mail.com'
 	const PASSWORD = 'admin123'
 
@@ -108,7 +107,9 @@ function App() {
 
 	return (
 		<div className={gravity}>
-			<div className={path === '/' && 'hidden'}>
+			<div className={pathname === '/' && 'hidden'}>
+				{/* {pathname !== '/' && <Nav/>} */}
+
 				<Nav
 					logout={logout}
 					onSearch={onSearch}
@@ -116,11 +117,11 @@ function App() {
 					closeAll={closeAll}
 					getRandom={getRandom}
 				/>
-				<Title />
 				<Modal isOpen={modalOpen} modalTitle={modalTitle} modalContent={modalContent} />
 			</div>
 			<Routes>
 				<Route path="/" element={<Form login={login} />} />
+				<Route path="/favorites" element={<Favorites />} />
 				<Route path="/home" element={<Cards characters={characters} onClose={onClose} />} />
 				<Route path="/about" element={<About />} />
 				<Route path="/detail/:id" element={<Detail />} />
