@@ -17,7 +17,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
 		case FILTER:
 			const allCharactersFavFiletered = state.allCharactersFav.filter((char) => char.gender === payload)
 			return payload === 'All'
-				? { ...state, myFavorites: state.allCharactersFav }
+				? { ...state, myFavorites: [...state.allCharactersFav] }
 				: {
 						...state,
 						myFavorites: allCharactersFavFiletered,
