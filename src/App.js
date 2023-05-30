@@ -8,6 +8,8 @@ import About from './components/About/About'
 import Detail from './components/Detail/Detail'
 import Form from './components/Form/Form'
 import Favorites from './components/Favorites/Favorites'
+import { useDispatch } from 'react-redux'
+import { removeFav } from './redux/actions/actions'
 
 function App() {
 	const [characters, setCharacters] = useState([])
@@ -17,6 +19,7 @@ function App() {
 	const [modalContent, setModalContent] = useState('')
 	const [access, setAccess] = useState(false)
 	const navigate = useNavigate()
+	const dispatch = useDispatch()
 	const { pathname } = useLocation()
 	const EMAIL = 'mail@mail.com'
 	const PASSWORD = 'admin123'
@@ -38,6 +41,7 @@ function App() {
 
 	const logout = () => {
 		setAccess(false)
+		setCharacters([])
 	}
 
 	const idNotFound = () => {
@@ -65,6 +69,7 @@ function App() {
 	}
 
 	const onClose = (id) => {
+		dispatch(removeFav(id))
 		setCharacters(characters.filter((char) => char.id !== id))
 	}
 

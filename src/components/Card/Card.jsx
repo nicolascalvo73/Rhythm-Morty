@@ -6,7 +6,7 @@ import { addFav, removeFav } from '../../redux/actions/actions'
 import { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 
-const Card = ({ id, name, image, onClose, addFav, removeFav, myFavorites }) => {
+const Card = ({ id, name, image, gender, onClose, addFav, removeFav, myFavorites }) => {
 	const [isFav, setIsFav] = useState(false)
 	const { pathname } = useLocation()
 
@@ -22,7 +22,7 @@ const Card = ({ id, name, image, onClose, addFav, removeFav, myFavorites }) => {
 
 	const handleFavorite = () => {
 		if (!isFav) {
-			addFav({ id, name, image })
+			addFav({ id, name, image, gender })
 			setIsFav(true)
 		} else {
 			removeFav(id)
