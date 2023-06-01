@@ -22,10 +22,12 @@ const Favorites = ({ myFavorites }) => {
 		<div className={styles.container}>
 			<div className={styles.selectors}>
 				<select onChange={handleOrder}>
+					<option>Sort by ID</option>
 					<option value="A">Ascending</option>
 					<option value="D">Descending</option>
 				</select>
 				<select onChange={handleFilter}>
+					<option>Sort by gender</option>
 					<option value="All">All Genders</option>
 					<option value="Male">Male</option>
 					<option value="Female">Female</option>
