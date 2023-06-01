@@ -11,7 +11,7 @@ const Favorites = ({ myFavorites }) => {
 
 	const handleOrder = (event) => {
 		dispatch(orderCards(event.target.value))
-		setAux(true)
+		setAux(!aux)
 	}
 
 	const handleFilter = (event) => {
