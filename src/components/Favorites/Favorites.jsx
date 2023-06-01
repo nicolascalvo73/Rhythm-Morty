@@ -46,6 +46,4 @@ export const mapStateToProps = (state) => {
 	}
 }
 
-// export const dispatchStatetoProps
-
 export default connect(mapStateToProps, null)(Favorites)
