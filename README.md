@@ -5,7 +5,8 @@
 App de integración desarrollada con:
 
 - React
-- Vanilla Javascript
+- Redux
+- FontAwesome
 
 Data from: <a href="https://rickandmortyapi.com/">API Rick & Morty</a>
 
