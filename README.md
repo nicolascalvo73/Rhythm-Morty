@@ -1,6 +1,6 @@
 # React & Morty
 
-<img src="./src/assets/images/me.png" width="300" height="300"/>
+<img src="./client/src/assets/images/me.png" width="300" height="300"/>
 <br>
 App de integración desarrollada con:
 
@@ -10,7 +10,7 @@ App de integración desarrollada con:
 
 Data from: <a href="https://rickandmortyapi.com/">API Rick & Morty</a>
 
-Visita la app corriendo en:
+Visita la app corriendo en: (momentaneamente roto...)
 
 https://rhythm-morty.vercel.app/
 
