@@ -21,7 +21,7 @@ const server = http.createServer((req, res) => {
 		}
 	} else {
 		res.setHeader('Content-Type', 'application/json')
-		res.statusCode = 404
+		res.statusCode = 403
 		res.end(JSON.stringify({ error: 'Invalid route' }))
 	}
 })
