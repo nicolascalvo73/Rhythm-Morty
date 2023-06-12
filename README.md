@@ -20,4 +20,4 @@ https://rhythm-morty.vercel.app/
 
 <hr>
 <br>
-<img src="https://d31uz8lwfmyn8g.cloudfront.net/Assets/logo-henry-white-lg.png" width="200" height="200"/>
+<img src="https://d31uz8lwfmyn8g.cloudfront.net/Assets/logo-henry-white-lg.png" width="200" />
