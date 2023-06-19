@@ -1,8 +1,8 @@
-import styles from './Favorites.module.css'
-import Card from '../Card/Card'
+import { useState } from 'react'
 import { connect, useDispatch } from 'react-redux'
 import { filterCards, orderCards } from '../../redux/actions/actions'
-import { useState } from 'react'
+import Card from '../Card/Card'
+import styles from './Favorites.module.css'
 
 const Favorites = ({ myFavorites }) => {
 	const [aux, setAux] = useState(false)
@@ -36,7 +36,7 @@ const Favorites = ({ myFavorites }) => {
 				</select>
 			</div>
 			{myFavorites.map(({ id, name, image, gender }) => {
-				return <Card id={id} name={name} image={image} gender={gender} />
+				return <Card key={id} id={id} name={name} image={image} gender={gender} />
 			})}
 		</div>
 	)

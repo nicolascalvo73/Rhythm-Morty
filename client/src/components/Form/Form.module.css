@@ -40,7 +40,6 @@
 	position: relative;
 	top: 6.5rem;
 	left: 5.5rem;
-	box-shadow: none;
 	z-index: 1;
 	width: 15rem;
 	height: 15rem;
@@ -59,7 +58,7 @@
 	align-items: center;
 	background-color: rgba(240, 248, 255, 0.5);
 	border-radius: 32px;
-	margin: 2rem 2rem 2rem 2rem;
+	margin: 2rem;
 	width: 38rem;
 	transition: background-color 1s ease-in-out;
 	&:hover {
@@ -156,15 +155,14 @@
 		radial-gradient(circle at 79% 59%, transparent 40%, #fffe9c 37%),
 		radial-gradient(circle at 50% 50%, #fdfeb4 100%, #fdfeb4 100%);
 }
-@media (max-width: 1000px) {
+@media (max-width: 1155px) {
 	.container {
-		top: 12rem;
+		top: 6rem;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		flex-direction: column;
 		border-radius: 32px;
-		height: 42rem;
 	}
 	.data {
 		position: relative;
@@ -172,14 +170,18 @@
 		width: 90%;
 	}
 	.portal {
-		top: -11rem;
-		left: 2rem;
-		justify-self: center;
+		display: none;
 	}
 	.overlayImg {
-		top: -5rem;
-		left: 0;
 		position: relative;
-		justify-self: center;
+		top: -1rem;
+		left: 0rem;
+		width: 7rem;
+		height: 7rem;
+	}
+	.input {
+		height: 1.5em;
+		width: 80%;
+		margin: 0;
 	}
 }

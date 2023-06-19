@@ -33,7 +33,7 @@
 	width: 2.8em;
 	margin: 1.2em 0.2em;
 	height: 2.8em;
-	border-radius: 1.5em;
+	border-radius: 1.4rem;
 	background-color: #0c6a77;
 }
 .Button:hover {
@@ -59,9 +59,12 @@
 		opacity: 1;
 	}
 }
-
-/* @media (max-width: 700px) {
+@media (max-width: 1160px) {
 	.Header {
-		flex-direction: column;
+		width: 100%;
 	}
-} */
+	.Input {
+		margin: 0;
+		width: 10rem;
+	}
+}

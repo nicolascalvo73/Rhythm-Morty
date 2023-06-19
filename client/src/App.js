@@ -1,35 +1,40 @@
-import './App.css'
-import Nav from './components/Nav/Nav.jsx'
-import Cards from './components/Cards/Cards.jsx'
-import Modal from './components/Modal/Modal'
-import { useState, useEffect } from 'react'
-import { useLocation, useNavigate, Route, Routes } from 'react-router-dom'
-import About from './components/About/About'
-import Detail from './components/Detail/Detail'
-import Form from './components/Form/Form'
-import Favorites from './components/Favorites/Favorites'
+import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
+import './App.css'
+import About from './components/About/About'
+import Cards from './components/Cards/Cards.jsx'
+import Detail from './components/Detail/Detail'
+import Favorites from './components/Favorites/Favorites'
+import Form from './components/Form/Form'
+import Modal from './components/Modal/Modal'
+import Nav from './components/Nav/Nav.jsx'
 import { removeFav } from './redux/actions/actions'
 
-function App() {
-	const [characters, setCharacters] = useState([])
-	const [gravity, setGravity] = useState('App')
-	const [modalOpen, setModalOpen] = useState(false)
-	const [modalTitle, setModalTitle] = useState('')
-	const [modalContent, setModalContent] = useState('')
-	const [access, setAccess] = useState(false)
+const App = () => {
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
 	const { pathname } = useLocation()
+	const [characters, setCharacters] = useState([])
+	const [gravity, setGravity] = useState('App')
+	// const [modalOpen, setModalOpen] = useState(false)
+	const [access, setAccess] = useState(false)
+	const [modal, setModal] = useState({
+		open: false,
+		title: '',
+		content: '',
+	})
 	const EMAIL = 'mail@mail.com'
 	const PASSWORD = 'admin123'
 
 	useEffect(() => {
-		!access && navigate('/')
-	}, [access])
+		if (!access) {
+			navigate('/')
+		}
+	}, [access, navigate])
 
 	const gravityHandle = () => {
-		gravity === 'App' ? setGravity('App-no-gravity') : setGravity('App')
+		setGravity((prevGravity) => (prevGravity === 'App' ? 'App-no-gravity' : 'App'))
 	}
 
 	const login = (userData) => {
@@ -45,26 +50,34 @@ function App() {
 	}
 
 	const idNotFound = () => {
-		setModalTitle('No encontre ese ID')
-		setModalContent('Estas promteando mal... serás castigada!')
-		setModalOpen(true)
+		setModal({
+			open: true,
+			title: 'No encontre ese ID',
+			content: 'Estas promteando mal... serás castigada!',
+		})
 		setTimeout(() => {
-			setModalTitle('')
-			setModalContent('')
-			setModalOpen(false)
+			setModal({
+				open: false,
+				title: '',
+				content: '',
+			})
 		}, 3500)
 	}
 
 	const nameNotFound = (name) => {
 		let str = name.toLowerCase()
 		let nombre = str.charAt(0).toUpperCase() + str.slice(1)
-		setModalTitle(`${nombre} no esta aquí!`)
-		setModalContent('Estas tipeando mal... serás castigada!')
-		setModalOpen(true)
+		setModal({
+			open: true,
+			title: `${nombre} no esta aquí!`,
+			content: 'Estas tipeando mal... serás castigada!',
+		})
 		setTimeout(() => {
-			setModalTitle('')
-			setModalContent('')
-			setModalOpen(false)
+			setModal({
+				open: false,
+				title: '',
+				content: '',
+			})
 		}, 3500)
 	}
 
@@ -74,6 +87,7 @@ function App() {
 	}
 
 	const closeAll = () => {
+		characters.forEach((char) => dispatch(removeFav(char.id)))
 		setCharacters([])
 		navigate('/home')
 	}
@@ -85,36 +99,30 @@ function App() {
 	}
 
 	const onSearch = (input) => {
-		if (!isNaN(input)) {
-			fetch(`http://localhost:3001/rickandmorty/character/${input}`)
-				.then((res) => res.json())
-				.then((data) => {
+		fetch(`http://localhost:3001/rickandmorty/character/${input}`)
+			.then((res) => res.json())
+			.then((data) => {
+				if (!isNaN(input)) {
 					if (data.name) {
-						setCharacters((oldChars) => [...oldChars, data])
+						setCharacters((prevChars) => [...prevChars, data])
 						navigate('/home')
 					} else {
 						idNotFound()
 					}
-				})
-		} else {
-			fetch(`https://rickandmortyapi.com/api/character/?name=${input}`)
-				.then((res) => res.json())
-				.then((data) => {
-					if (data.results) {
-						setCharacters((oldChars) => [...oldChars, ...data.results])
+				} else {
+					if (data) {
+						setCharacters((oldChars) => [...oldChars, ...data])
 						navigate('/home')
 					} else {
 						nameNotFound(input)
 					}
-				})
-		}
+				}
+			})
 	}
 
 	return (
 		<div className={gravity}>
 			<div className={pathname === '/' && 'hidden'}>
-				{/* {pathname !== '/' && <Nav/>} */}
-
 				<Nav
 					logout={logout}
 					onSearch={onSearch}
@@ -122,7 +130,7 @@ function App() {
 					closeAll={closeAll}
 					getRandom={getRandom}
 				/>
-				<Modal isOpen={modalOpen} modalTitle={modalTitle} modalContent={modalContent} />
+				<Modal isOpen={modal.open} modalTitle={modal.title} modalContent={modal.content} />
 			</div>
 			<Routes>
 				<Route path="/" element={<Form login={login} />} />

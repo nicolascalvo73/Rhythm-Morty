@@ -16,19 +16,16 @@
 }
 .container {
 	backdrop-filter: blur(5px);
-	/* position: relative; */
 	border-radius: 256px 32px 32px 256px;
 	margin: 0 15%;
 	width: 70%;
-	height: 28rem;
 	animation: appear 0.5s ease-out forwards;
 	background-color: rgba(38, 38, 38, 0.5);
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 }
 .container img {
-	box-shadow: none;
-	background-color: blue;
 	position: relative;
 	z-index: 1;
 	margin: 6.5rem 0rem 0rem 5.5rem;
@@ -42,11 +39,6 @@
 	border-radius: 32px;
 	margin: 2rem 2rem 2rem 2rem;
 	width: 38rem;
-}
-@media (max-width: 1024px) {
-	.container {
-		border-radius: 32px 32px 32px 32px;
-	}
 }
 
 .button {
@@ -86,7 +78,6 @@
 }
 
 .portal {
-	/* display: flex; */
 	position: absolute;
 	top: 3rem;
 	left: 2rem;
@@ -127,4 +118,31 @@
 		radial-gradient(circle at 49% 35%, transparent 40%, #fff8c5 37%),
 		radial-gradient(circle at 79% 59%, transparent 40%, #fffe9c 37%),
 		radial-gradient(circle at 50% 50%, #fdfeb4 100%, #fdfeb4 100%);
+}
+
+@media (max-width: 1160px) {
+	.container {
+		width: 90%;
+		flex-direction: column;
+		border-radius: 32px;
+		padding: 0;
+		margin: 5%;
+	}
+	.portal {
+		display: none;
+	}
+	.container img {
+		align-self: center;
+		margin: 0;
+		z-index: 3;
+	}
+	.button {
+		top: -1rem;
+		right: 0;
+		z-index: 999;
+	}
+	.data {
+		width: 90%;
+		margin: 0 10%;
+	}
 }

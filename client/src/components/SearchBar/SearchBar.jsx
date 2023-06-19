@@ -26,33 +26,32 @@ const SearchBar = ({ onSearch, closeAll, getRandom }) => {
 				onKeyDown={handleKeyDown}
 				value={input}
 			/>
-			<div className={styles.btnContainer}>
-				<button
-					className={styles.Button}
-					onClick={() => {
-						onSearch(input)
-						setInput('')
-					}}>
-					<FontAwesomeIcon icon={faCircleArrowDown} />
-					<tool-tip>Get Character</tool-tip>
-				</button>
-				<button
-					className={styles.Button}
-					onClick={() => {
-						getRandom()
-					}}>
-					<FontAwesomeIcon icon={faShuffle} />
-					<tool-tip>Get Random</tool-tip>
-				</button>
-				<button
-					className={styles.Button}
-					onClick={() => {
-						closeAll()
-					}}>
-					<FontAwesomeIcon icon={faBroom} />
-					<tool-tip>Clean-em all!</tool-tip>
-				</button>
-			</div>
+
+			<button
+				className={styles.Button}
+				onClick={() => {
+					onSearch(input)
+					setInput('')
+				}}>
+				<FontAwesomeIcon icon={faCircleArrowDown} />
+				<tool-tip>Get Character</tool-tip>
+			</button>
+			<button
+				className={styles.Button}
+				onClick={() => {
+					getRandom()
+				}}>
+				<FontAwesomeIcon icon={faShuffle} />
+				<tool-tip>Get Random</tool-tip>
+			</button>
+			<button
+				className={styles.Button}
+				onClick={() => {
+					closeAll()
+				}}>
+				<FontAwesomeIcon icon={faBroom} />
+				<tool-tip>Clean-em all!</tool-tip>
+			</button>
 		</div>
 	)
 }

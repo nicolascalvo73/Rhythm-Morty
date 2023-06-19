@@ -14,6 +14,145 @@
 		transform: rotate(-360deg);
 	}
 }
+.container {
+	backdrop-filter: blur(5px);
+	border-radius: 256px 32px 32px 256px;
+	margin: 0 15%;
+	width: 70%;
+	animation: appear 0.5s ease-out forwards;
+	background-color: rgba(38, 38, 38, 0.5);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.container img {
+	position: relative;
+	z-index: 1;
+	margin: 0rem 0rem 0rem 1.5rem;
+	width: 22rem;
+	height: 22rem;
+	border-radius: 50%;
+	box-shadow: 0px 0px 32px 32px rgb(0, 0, 0);
+}
+.data {
+	background-color: aliceblue;
+	border-radius: 32px;
+	margin: 2rem 2rem 2rem 2rem;
+	width: 38rem;
+}
+
+.button {
+	top: 1em;
+	right: 2em;
+	position: absolute;
+	font-size: larger;
+	color: aliceblue;
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+	width: 2.8em;
+	margin: 1.2em 0.2em;
+	height: 2.8em;
+	border-radius: 1.5em;
+	background-color: #0c6a77;
+}
+.button:hover {
+	cursor: pointer;
+}
+.button tool-tip {
+	position: absolute;
+	top: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 5rem;
+	height: 1.5rem;
+	z-index: 999;
+	pointer-events: none;
+	user-select: none;
+	background-color: rgba(0, 0, 0, 0.5);
+	border-radius: 0.7rem;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+	&:hover {
+		opacity: 1;
+	}
+}
+
+.portal {
+	position: absolute;
+	top: 3rem;
+	left: 2rem;
+	z-index: 0;
+	animation: portal 35s infinite linear;
+	background-color: #66ba4f;
+	box-shadow: 0px 0px 40px 10px #448c3f;
+	width: 22rem;
+	height: 22rem;
+	border-radius: 50%;
+	background: radial-gradient(circle at 77% 80%, #fdfeb4 2.5%, transparent 2.5%),
+		radial-gradient(circle at 75% 83%, #fdfeb4 2%, transparent 2%),
+		radial-gradient(circle at 79% 83%, #fdfeb4 1%, transparent 1%),
+		radial-gradient(circle at 45% 13%, #ffffd5 1.5%, transparent 1.5%),
+		radial-gradient(circle at 42% 13%, #ffffd5 2%, transparent 2%),
+		radial-gradient(circle at 38% 14%, #ffffd5 1.5%, transparent 1.5%),
+		radial-gradient(circle at 20% 24%, #fdfeb4 1%, transparent 1%),
+		radial-gradient(circle at 21% 23%, #fdfeb4 1%, transparent 1%),
+		radial-gradient(circle at 51% 13%, #fdfeb4 1%, transparent 1%),
+		radial-gradient(circle at 81% 33%, #fdfeb4 1%, transparent 1%),
+		radial-gradient(circle at 85% 36%, #fdfeb4 2%, transparent 2%),
+		radial-gradient(circle at 21% 46%, #fdfeb4 1%, transparent 1%),
+		radial-gradient(circle at 20% 51%, #fdfeb4 2%, transparent 2%),
+		radial-gradient(circle at 53% 51%, transparent 64%, #43a93e 64%),
+		radial-gradient(circle at 47% 59%, transparent 64%, #43843e 64%),
+		radial-gradient(circle at 47% 60%, transparent 59%, #1a9042 59%),
+		radial-gradient(circle at 50% 59%, transparent 55%, #1b863c 55%),
+		radial-gradient(circle at 45% 60%, transparent 55%, #399c49 55%),
+		radial-gradient(circle at 47% 60%, transparent 46%, #1a9042 46%),
+		radial-gradient(circle at 46% 55%, transparent 43%, #75b03b 43%),
+		radial-gradient(circle at 36% 55%, transparent 43%, #a9cb48 43%),
+		radial-gradient(circle at 50% 60%, transparent 40%, #66ba4f 40%),
+		radial-gradient(circle at 50% 53%, transparent 40%, #e5e051 37%),
+		radial-gradient(circle at 30% 48%, transparent 40%, #eaf157 37%),
+		radial-gradient(circle at 57% 69%, transparent 40%, #eaf157 40%),
+		radial-gradient(circle at 40% 88%, transparent 40%, #e9e072 37%),
+		radial-gradient(circle at 67% 54%, transparent 40%, #faeb7b 37%),
+		radial-gradient(circle at 49% 35%, transparent 40%, #fff8c5 37%),
+		radial-gradient(circle at 79% 59%, transparent 40%, #fffe9c 37%),
+		radial-gradient(circle at 50% 50%, #fdfeb4 100%, #fdfeb4 100%);
+}
+
+@media (max-width: 1160px) {
+	.container {
+		width: 90%;
+		flex-direction: column;
+		border-radius: 32px;
+		padding: 0;
+		margin: 5%;
+	}
+	.portal {
+		display: none;
+	}
+	.container img {
+		top: 0rem;
+		width: 15rem;
+		height: 15rem;
+		align-self: center;
+		margin: 0;
+		z-index: 3;
+	}
+	.button {
+		top: -1rem;
+		right: 0;
+		z-index: 999;
+	}
+	.data {
+		width: 90%;
+		margin: 0 10%;
+	}
+	.pickleRick {
+		scale: 0.75;
+	}
+}
+
 @keyframes rickMotion {
 	0% {
 		transform: translate(500%, -10%) rotate(35deg);
@@ -32,31 +171,9 @@
 		transform: translate(500%, -10%) rotate(35deg);
 	}
 }
-.container {
-	backdrop-filter: blur(5px);
-	position: relative;
-	border-radius: 256px 32px 32px 256px;
-	margin: 0 15%;
-	width: 70%;
-	animation: appear 0.5s ease-out forwards;
-	background-color: rgba(38, 38, 38, 0.5);
-	display: flex;
-	justify-content: space-between;
-}
-.container img {
-	position: relative;
-	z-index: 1;
-	width: 25rem;
-	height: 25rem;
-}
-.data {
-	background-color: aliceblue;
-	border-radius: 32px;
-	margin: 2rem;
-	width: 38rem;
-}
 
 .pickleRick {
+	z-index: 999;
 	background-color: #4e8225;
 	background-image: radial-gradient(5px at 44px 50px, black 0%, black 50%, transparent 53%),
 		radial-gradient(5px at 19px 53px, black 0%, black 50%, transparent 53%),
@@ -123,46 +240,4 @@
 	animation: rickMotion 75s infinite linear;
 	border-radius: 80% 80% 80% 80% / 40% 40% 40% 40%;
 	user-select: none;
-}
-.portal {
-	position: absolute;
-	top: 2rem;
-	left: 2rem;
-	z-index: 0;
-	animation: portal 35s infinite linear;
-	background-color: #66ba4f;
-	box-shadow: 0px 0px 40px 10px #448c3f;
-	height: 22rem;
-	width: 22rem;
-	border-radius: 50%;
-	background: radial-gradient(circle at 77% 80%, #fdfeb4 2.5%, transparent 2.5%),
-		radial-gradient(circle at 75% 83%, #fdfeb4 2%, transparent 2%),
-		radial-gradient(circle at 79% 83%, #fdfeb4 1%, transparent 1%),
-		radial-gradient(circle at 45% 13%, #ffffd5 1.5%, transparent 1.5%),
-		radial-gradient(circle at 42% 13%, #ffffd5 2%, transparent 2%),
-		radial-gradient(circle at 38% 14%, #ffffd5 1.5%, transparent 1.5%),
-		radial-gradient(circle at 20% 24%, #fdfeb4 1%, transparent 1%),
-		radial-gradient(circle at 21% 23%, #fdfeb4 1%, transparent 1%),
-		radial-gradient(circle at 51% 13%, #fdfeb4 1%, transparent 1%),
-		radial-gradient(circle at 81% 33%, #fdfeb4 1%, transparent 1%),
-		radial-gradient(circle at 85% 36%, #fdfeb4 2%, transparent 2%),
-		radial-gradient(circle at 21% 46%, #fdfeb4 1%, transparent 1%),
-		radial-gradient(circle at 20% 51%, #fdfeb4 2%, transparent 2%),
-		radial-gradient(circle at 53% 51%, transparent 64%, #43a93e 64%),
-		radial-gradient(circle at 47% 59%, transparent 64%, #43843e 64%),
-		radial-gradient(circle at 47% 60%, transparent 59%, #1a9042 59%),
-		radial-gradient(circle at 50% 59%, transparent 55%, #1b863c 55%),
-		radial-gradient(circle at 45% 60%, transparent 55%, #399c49 55%),
-		radial-gradient(circle at 47% 60%, transparent 46%, #1a9042 46%),
-		radial-gradient(circle at 46% 55%, transparent 43%, #75b03b 43%),
-		radial-gradient(circle at 36% 55%, transparent 43%, #a9cb48 43%),
-		radial-gradient(circle at 50% 60%, transparent 40%, #66ba4f 40%),
-		radial-gradient(circle at 50% 53%, transparent 40%, #e5e051 37%),
-		radial-gradient(circle at 30% 48%, transparent 40%, #eaf157 37%),
-		radial-gradient(circle at 57% 69%, transparent 40%, #eaf157 40%),
-		radial-gradient(circle at 40% 88%, transparent 40%, #e9e072 37%),
-		radial-gradient(circle at 67% 54%, transparent 40%, #faeb7b 37%),
-		radial-gradient(circle at 49% 35%, transparent 40%, #fff8c5 37%),
-		radial-gradient(circle at 79% 59%, transparent 40%, #fffe9c 37%),
-		radial-gradient(circle at 50% 50%, #fdfeb4 100%, #fdfeb4 100%);
 }
