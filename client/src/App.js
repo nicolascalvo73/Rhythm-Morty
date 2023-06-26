@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
@@ -17,15 +18,12 @@ const App = () => {
 	const { pathname } = useLocation()
 	const [characters, setCharacters] = useState([])
 	const [gravity, setGravity] = useState('App')
-	// const [modalOpen, setModalOpen] = useState(false)
 	const [access, setAccess] = useState(false)
 	const [modal, setModal] = useState({
 		open: false,
 		title: '',
 		content: '',
 	})
-	const EMAIL = 'mail@mail.com'
-	const PASSWORD = 'admin123'
 
 	useEffect(() => {
 		if (!access) {
@@ -38,10 +36,13 @@ const App = () => {
 	}
 
 	const login = (userData) => {
-		if (userData.password === PASSWORD && userData.email === EMAIL) {
-			setAccess(true)
-			navigate('/home')
-		}
+		const { email, password } = userData
+		const URL = 'http://localhost:3001/rickandmorty/login/'
+		axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
+			const { access } = data
+			setAccess(data)
+			access && navigate('/home')
+		})
 	}
 
 	const logout = () => {
@@ -106,6 +107,7 @@ const App = () => {
 					if (data.name) {
 						setCharacters((prevChars) => [...prevChars, data])
 						navigate('/home')
+						console.log(data)
 					} else {
 						idNotFound()
 					}

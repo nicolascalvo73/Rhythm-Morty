@@ -10,18 +10,15 @@ const rootReducer = (state = initialState, { type, payload }) => {
 		case ADD_FAV:
 			return {
 				...state,
-				myFavorites: [...state.allCharactersFav, payload],
-				allCharactersFav: [...state.allCharactersFav, payload],
+				myFavorites: payload,
+				allCharactersFav: payload,
 			}
 
 		case FILTER:
 			const allCharactersFavFiletered = state.allCharactersFav.filter((char) => char.gender === payload)
 			return payload === 'All'
 				? { ...state, myFavorites: [...state.allCharactersFav] }
-				: {
-						...state,
-						myFavorites: allCharactersFavFiletered,
-				  }
+				: { ...state, myFavorites: allCharactersFavFiletered }
 
 		case ORDER:
 			const allCharactersFavCopy = [...state.allCharactersFav]
@@ -36,8 +33,8 @@ const rootReducer = (state = initialState, { type, payload }) => {
 		case REMOVE_FAV:
 			return {
 				...state,
-				myFavorites: state.myFavorites.filter((char) => char.id !== payload),
-				allCharactersFav: state.allCharactersFav.filter((char) => char.id !== payload),
+				myFavorites: payload,
+				allCharactersFav: payload,
 			}
 
 		default:

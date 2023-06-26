@@ -30,6 +30,7 @@ const Card = ({ id, name, image, gender, onClose, addFav, removeFav, myFavorites
 		}
 	}
 	const handleClose = () => {
+		console.log(id)
 		removeFav(id)
 		onClose(id)
 	}
