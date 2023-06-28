@@ -35,14 +35,18 @@ const App = () => {
 		setGravity((prevGravity) => (prevGravity === 'App' ? 'App-no-gravity' : 'App'))
 	}
 
-	const login = (userData) => {
-		const { email, password } = userData
-		const URL = 'http://localhost:3001/rickandmorty/login/'
-		axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
+	const login = async (userData) => {
+		try {
+			const { email, password } = userData
+			const URL = 'http://localhost:3001/rickandmorty/login/'
+			const login = await axios(URL + `?email=${email}&password=${password}`)
+			const { data } = login
 			const { access } = data
 			setAccess(data)
-			access && navigate('/home')
-		})
+			access ? navigate('/home') : window.alert(`Look Morty ${email.split('@')[0]} no puede entrar!`)
+		} catch (error) {
+			window.alert(error.message)
+		}
 	}
 
 	const logout = () => {
@@ -50,11 +54,11 @@ const App = () => {
 		setCharacters([])
 	}
 
-	const idNotFound = () => {
+	const showModal = (title, content) => {
 		setModal({
 			open: true,
-			title: 'No encontre ese ID',
-			content: 'Estas promteando mal... serás castigada!',
+			title: title,
+			content: content,
 		})
 		setTimeout(() => {
 			setModal({
@@ -65,21 +69,14 @@ const App = () => {
 		}, 3500)
 	}
 
+	const idNotFound = () => {
+		showModal('No encontre ese ID', 'Estas promteando mal... serás castigada!')
+	}
+
 	const nameNotFound = (name) => {
 		let str = name.toLowerCase()
 		let nombre = str.charAt(0).toUpperCase() + str.slice(1)
-		setModal({
-			open: true,
-			title: `${nombre} no esta aquí!`,
-			content: 'Estas tipeando mal... serás castigada!',
-		})
-		setTimeout(() => {
-			setModal({
-				open: false,
-				title: '',
-				content: '',
-			})
-		}, 3500)
+		showModal(`${nombre} no esta aquí!`, 'Estas tipeando mal... serás castigada!')
 	}
 
 	const onClose = (id) => {
@@ -99,15 +96,16 @@ const App = () => {
 		navigate('/home')
 	}
 
-	const onSearch = (input) => {
-		fetch(`http://localhost:3001/rickandmorty/character/${input}`)
-			.then((res) => res.json())
-			.then((data) => {
+	const onSearch = async (input) => {
+		const exists = characters.find((char) => char.id === +input)
+		if (!exists) {
+			try {
+				const response = await axios(`http://localhost:3001/rickandmorty/character/${input}`)
+				const { data } = response
 				if (!isNaN(input)) {
 					if (data.name) {
 						setCharacters((prevChars) => [...prevChars, data])
 						navigate('/home')
-						console.log(data)
 					} else {
 						idNotFound()
 					}
@@ -119,7 +117,12 @@ const App = () => {
 						nameNotFound(input)
 					}
 				}
-			})
+			} catch (error) {
+				showModal('algo falló...', error.message)
+			}
+		} else {
+			showModal('Ya está aqui', 'pay atention man!')
+		}
 	}
 
 	return (
