@@ -44,7 +44,7 @@ const Form = ({ login }) => {
 			<img className={styles.overlayImg} src={img} alt="Character" />
 			<form className={styles.data}>
 				<label>
-					<h2>E-mail</h2>
+					<h2>E-mail...</h2>
 				</label>
 				<input onChange={handleChange} value={userData.email} name="email" className={styles.input}></input>
 				<span className={styles.warning}>{` ${
