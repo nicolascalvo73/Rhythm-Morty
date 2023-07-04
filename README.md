@@ -10,9 +10,13 @@ App de integración desarrollada con:
 
 Data from: <a href="https://rickandmortyapi.com/">API Rick & Morty</a>
 
-Visita la app corriendo en: (momentaneamente roto...)
+Visita la app corriendo en:
 
-https://rhythm-morty.vercel.app/
+https://react-and-morty-gamma.vercel.app/
+
+Server deployed on render.com:
+
+https://reactandmorty.onrender.com/
 
 <a href="https://www.linkedin.com/in/nicolascalvo73/">Contacto</a>
 <br>
