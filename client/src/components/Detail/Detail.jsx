@@ -1,13 +1,12 @@
-import styles from './Detail.module.css'
-import { useParams, Link } from 'react-router-dom'
-import axios from 'axios'
-import { useEffect } from 'react'
-import { useState } from 'react'
 import { faCircleArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import axios from 'axios'
+import { useEffect, useState } from 'react'
+import { Link, useParams } from 'react-router-dom'
+import { BASE_URL } from '../../falseEnv'
+import styles from './Detail.module.css'
 
 const Detail = () => {
-	const BASE_URL = 'https://reactandmorty.onrender.com'
 	const { id } = useParams()
 	const [character, setCharacter] = useState([])
 

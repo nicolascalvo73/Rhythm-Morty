@@ -1,7 +1,7 @@
 import axios from 'axios'
+import { BASE_URL } from '../../falseEnv'
 import { ADD_FAV, FILTER, ORDER, REMOVE_FAV } from './types'
 
-const BASE_URL = 'https://reactandmorty.onrender.com'
 const endpoint = `${BASE_URL}/rickandmorty/fav`
 export const addFav = (character) => {
 	return async (dispatch) => {
@@ -20,7 +20,7 @@ export const addFav = (character) => {
 export const removeFav = (id) => {
 	return async (dispatch) => {
 		try {
-			const response = await axios.delete(endpoint + id)
+			const response = await axios.delete(`${endpoint}/${id}`)
 			const { data } = response
 			return dispatch({
 				type: REMOVE_FAV,

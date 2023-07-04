@@ -2,18 +2,18 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
+import { BASE_URL } from './falseEnv'
 import './App.css'
 import About from './components/About/About'
-import Cards from './components/Cards/Cards.jsx'
+import Cards from './components/Cards/Cards'
 import Detail from './components/Detail/Detail'
 import Favorites from './components/Favorites/Favorites'
 import Form from './components/Form/Form'
 import Modal from './components/Modal/Modal'
-import Nav from './components/Nav/Nav.jsx'
+import Nav from './components/Nav/Nav'
 import { removeFav } from './redux/actions/actions'
 
 const App = () => {
-	const BASE_URL = 'https://reactandmorty.onrender.com'
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
 	const { pathname } = useLocation()
@@ -40,7 +40,8 @@ const App = () => {
 		try {
 			const { email, password } = userData
 			const URL = `${BASE_URL}/rickandmorty/login/`
-			const login = await axios(URL + `?email=${email}&password=${password}`)
+			const login = await axios(`${URL}?email=${email}&password=${password}`)
+			console.log(login.data)
 			const { data } = login
 			const { access } = data
 			setAccess(data)
