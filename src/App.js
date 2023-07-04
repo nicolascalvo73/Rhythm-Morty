@@ -13,6 +13,7 @@ import Nav from './components/Nav/Nav.jsx'
 import { removeFav } from './redux/actions/actions'
 
 const App = () => {
+	const BASE_URL = 'https://reactandmorty.onrender.com'
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
 	const { pathname } = useLocation()
@@ -38,7 +39,7 @@ const App = () => {
 	const login = async (userData) => {
 		try {
 			const { email, password } = userData
-			const URL = 'http://localhost:3001/rickandmorty/login/'
+			const URL = `${BASE_URL}/rickandmorty/login/`
 			const login = await axios(URL + `?email=${email}&password=${password}`)
 			const { data } = login
 			const { access } = data
@@ -100,7 +101,7 @@ const App = () => {
 		const exists = characters.find((char) => char.id === +input)
 		if (!exists) {
 			try {
-				const response = await axios(`http://localhost:3001/rickandmorty/character/${input}`)
+				const response = await axios(`${BASE_URL}/rickandmorty/character/${input}`)
 				const { data } = response
 				if (!isNaN(input)) {
 					if (data.name) {

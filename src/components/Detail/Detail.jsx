@@ -7,11 +7,12 @@ import { faCircleArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Detail = () => {
+	const BASE_URL = 'https://reactandmorty.onrender.com'
 	const { id } = useParams()
 	const [character, setCharacter] = useState([])
 
 	useEffect(() => {
-		axios(`http://localhost:3001/rickandmorty/character/${id}`).then(({ data }) => {
+		axios(`${BASE_URL}/rickandmorty/character/${id}`).then(({ data }) => {
 			if (data.name) {
 				setCharacter(data)
 			} else {
