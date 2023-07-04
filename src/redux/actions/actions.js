@@ -1,7 +1,8 @@
-import { ADD_FAV, REMOVE_FAV, FILTER, ORDER } from './types'
 import axios from 'axios'
+import { ADD_FAV, FILTER, ORDER, REMOVE_FAV } from './types'
 
-const endpoint = 'http://localhost:3001/rickandmorty/fav'
+const BASE_URL = 'https://reactandmorty.onrender.com'
+const endpoint = `${BASE_URL}/rickandmorty/fav`
 export const addFav = (character) => {
 	return async (dispatch) => {
 		try {
