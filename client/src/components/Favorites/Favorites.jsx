@@ -16,6 +16,7 @@ const Favorites = ({ myFavorites }) => {
 
 	const handleFilter = (event) => {
 		dispatch(filterCards(event.target.value))
+		setAux(!aux)
 	}
 
 	return (

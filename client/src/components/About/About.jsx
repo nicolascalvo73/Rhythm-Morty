@@ -5,10 +5,13 @@ const About = () => {
 	const pickleClick = () => {
 		window.open('https://www.youtube.com/watch?v=leCVVw6iD84', '_blank')
 	}
+	const meClick = () => {
+		window.open('http://mpago.la/11SPSis', '_blank')
+	}
 
 	return (
 		<div className={styles.container}>
-			<img src={meImage} alt="Foto del autor RickandMortyzada" />
+			<img src={meImage} alt="Foto del autor RickandMortyzada" onClick={meClick} />
 			<div className={styles.portal}></div>
 			<div className={styles.data}>
 				<h1>Nicolás Calvo</h1>

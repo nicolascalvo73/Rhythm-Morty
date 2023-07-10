@@ -37,12 +37,10 @@ const App = () => {
 	}
 
 	const login = async (userData) => {
+		const { email, password } = userData
+		const URL = `${BASE_URL}/rickandmorty/login/`
 		try {
-			const { email, password } = userData
-			const URL = `${BASE_URL}/rickandmorty/login/`
-			const login = await axios(`${URL}?email=${email}&password=${password}`)
-			console.log(login.data)
-			const { data } = login
+			const { data } = await axios(`${URL}?email=${email}&password=${password}`)
 			const { access } = data
 			setAccess(data)
 			access ? navigate('/home') : window.alert(`Look Morty ${email.split('@')[0]} no puede entrar!`)
@@ -102,8 +100,7 @@ const App = () => {
 		const exists = characters.find((char) => char.id === +input)
 		if (!exists) {
 			try {
-				const response = await axios(`${BASE_URL}/rickandmorty/character/${input}`)
-				const { data } = response
+				const { data } = await axios(`${BASE_URL}/rickandmorty/character/${input}`)
 				if (!isNaN(input)) {
 					if (data.name) {
 						setCharacters((prevChars) => [...prevChars, data])

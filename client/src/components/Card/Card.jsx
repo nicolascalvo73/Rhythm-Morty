@@ -21,13 +21,8 @@ const Card = ({ id, name, image, gender, onClose, addFav, removeFav, myFavorites
 	const nameFit = name.length > 14 ? `${name.substring(0, 14)}...` : name
 
 	const handleFavorite = () => {
-		if (!isFav) {
-			addFav({ id, name, image, gender })
-			setIsFav(true)
-		} else {
-			removeFav(id)
-			setIsFav(false)
-		}
+		isFav ? removeFav(id) : addFav({ id, name, image, gender })
+		setIsFav(!isFav)
 	}
 	const handleClose = () => {
 		removeFav(id)
