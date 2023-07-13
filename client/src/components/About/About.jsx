@@ -6,7 +6,7 @@ const About = () => {
 		window.open('https://www.youtube.com/watch?v=leCVVw6iD84', '_blank')
 	}
 	const meClick = () => {
-		window.open('http://mpago.la/11SPSis', '_blank')
+		window.open('https://www.youtube.com/watch?v=nUO-UzOHabA', '_blank')
 	}
 
 	return (
